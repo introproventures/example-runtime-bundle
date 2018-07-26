@@ -42,13 +42,14 @@ pipeline {
         steps {
           container('maven') {
             // ensure we're not on a detached head
-            sh "git checkout master"
+            sh "git checkout develop"
             sh "git config --global credential.helper store"
 
             sh "jx step git credentials"
             // so we can retrieve the version in later steps
             sh "echo \$(jx-release-version) > VERSION"
             sh "mvn versions:set -DnewVersion=\$(cat VERSION)"
+            sh 'mvn clean verify'
           }
           dir ('./charts/example-runtime-bundle') {
             container('maven') {
@@ -56,7 +57,7 @@ pipeline {
             }
           }
           container('maven') {
-            sh 'mvn clean deploy'
+            sh 'mvn clean deploy -DskipTests'
 
             sh 'export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml'
 
@@ -67,7 +68,7 @@ pipeline {
       }
       stage('Promote to Environments') {
         when {
-          branch 'master'
+          branch 'develop'
         }
         steps {
           dir ('./charts/example-runtime-bundle') {
