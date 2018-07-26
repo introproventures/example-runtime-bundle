@@ -37,7 +37,7 @@ pipeline {
       }
       stage('Build Release') {
         when {
-          branch 'master'
+          branch 'develop'
         }
         steps {
           container('maven') {
@@ -85,7 +85,7 @@ pipeline {
       }
     }
     post {
-        always {
+        success {
             cleanWs()
         }
         failure {
