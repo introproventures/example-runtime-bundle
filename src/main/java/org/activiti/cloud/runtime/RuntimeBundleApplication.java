@@ -8,7 +8,6 @@ import org.stagemonitor.core.Stagemonitor;
 
 @SpringBootApplication
 @ActivitiRuntimeBundle
-@ComponentScan("org.activiti.cloud.services.common.security")
 public class RuntimeBundleApplication {
 
     public static void main(String[] args) {
