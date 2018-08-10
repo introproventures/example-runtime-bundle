@@ -23,7 +23,7 @@ global:
 db:
   uri: ""
   name: activitipostgresql
-  deployPostgres: false
+  deployPostgres: true
   port: 5432
 
 activitipostgresql:
@@ -42,11 +42,11 @@ javaOpts:
   xms: 512m
   other: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Dsun.zip.disableMemoryMapping=true -XX:+UseParallelGC -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90
 image:
-  repository: activiti/example-runtime-bundle
+  repository: introproventures/example-runtime-bundle
   tag: latest
   pullPolicy: IfNotPresent
 service:
-  name: rb-my-app
+  name: example-runtime-bundle
   type: ClusterIP
   externalPort: 80
   internalPort: 8080
