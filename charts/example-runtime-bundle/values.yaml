@@ -22,11 +22,11 @@ global:
     hostName: ""
 db:
   uri: ""
-  name: activitipostgresql
+  name: examplepostgresql
   deployPostgres: true
   port: 5432
 
-activitipostgresql:
+examplepostgresql:
    postgresPassword: activiti
 
 ## Allows the specification of additional environment variables
@@ -75,7 +75,7 @@ ingress:
   ## Set to true to enable ingress record generation
   enabled: false
 
-  path: /rb-my-app
+  path: /example-runtime-bundle
 
   ## Set this to true in order to enable TLS on the ingress record
   tls: false
