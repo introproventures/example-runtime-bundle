@@ -25,8 +25,8 @@ public class RuntimeBundleApplicationConfigurer implements ProcessEngineConfigur
 		
 		configuration.setCustomPostDeployers(Arrays.asList(new RulesDeployer()));
 		configuration.setAsyncExecutorActivate(true);
-		configuration.setAsyncExecutorDefaultAsyncJobAcquireWaitTime(5000); // ms
-		configuration.setAsyncExecutorDefaultTimerJobAcquireWaitTime(5000); // ms
+		configuration.setAsyncExecutorDefaultAsyncJobAcquireWaitTime(1000); // ms
+		configuration.setAsyncExecutorDefaultTimerJobAcquireWaitTime(1000); // ms
 		configuration.setAsyncExecutorAsyncJobLockTimeInMillis(1000); // ms
 		configuration.setAsyncExecutorTimerLockTimeInMillis(1000); // ms
 		configuration.setAsyncExecutorMaxAsyncJobsDuePerAcquisition(jobsPerAquisttion);
