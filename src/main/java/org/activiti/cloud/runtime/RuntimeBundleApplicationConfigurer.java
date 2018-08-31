@@ -24,6 +24,7 @@ public class RuntimeBundleApplicationConfigurer implements ProcessEngineConfigur
 		Integer jobsPerAquisttion = Runtime.getRuntime().availableProcessors() * 2;
 		
 		configuration.setCustomPostDeployers(Arrays.asList(new RulesDeployer()));
+		configuration.setDeploymentMode("none");
 		configuration.setAsyncExecutorActivate(true);
 		configuration.setAsyncExecutorDefaultAsyncJobAcquireWaitTime(1000); // ms
 		configuration.setAsyncExecutorDefaultTimerJobAcquireWaitTime(1000); // ms
