@@ -20,18 +20,16 @@ pipeline {
         steps {
           container('maven') {
             sh "mvn versions:set -DnewVersion=$PREVIEW_VERSION"
-            sh "mvn install"
-            sh 'export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml'
-
-
-            sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
+            sh "mvn install -DskipTests"
+            // sh 'export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml'
+            // sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
           }
 
-          dir ('./charts/preview') {
-           container('maven') {
-             sh "make preview"
-             sh "jx preview --app $APP_NAME --dir ../.."
-           }
+          //dir ('./charts/preview') {
+          // container('maven') {
+          //   sh "make preview"
+          //   sh "jx preview --app $APP_NAME --dir ../.."
+          // }
           }
         }
       }
@@ -49,7 +47,7 @@ pipeline {
             // so we can retrieve the version in later steps
             sh "echo \$(jx-release-version) > VERSION"
             sh "mvn versions:set -DnewVersion=\$(cat VERSION)"
-            sh 'mvn clean verify'
+            sh 'mvn clean install -DskipTests'
           }
           dir ('./charts/example-runtime-bundle') {
             container('maven') {
