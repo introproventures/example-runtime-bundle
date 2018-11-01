@@ -16,19 +16,19 @@
   <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
     <java.version>1.8</java.version>
-    <activiti.cloud.version>7.0.0.Beta1</activiti.cloud.version>
+    <activiti.cloud.version>7.0.0.Beta2</activiti.cloud.version>
     <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     <maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
     <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version> <!-- required for jx -->
 	<!-- Stagemonitor -->    
-  	<stagemonitor.version>0.88.2</stagemonitor.version>
+  	<activiti-cloud-services-stagemonitor.version>7.0.0</activiti-cloud-services-stagemonitor.version>
   	<!-- Drools -->
   	<drools.version>5.4.0.Final</drools.version>
   </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.activiti.cloud</groupId>
+        <groupId>org.activiti.cloud.dependencies</groupId>
         <artifactId>activiti-cloud-dependencies</artifactId>
         <version>${activiti.cloud.version}</version>
         <scope>import</scope>
@@ -39,31 +39,11 @@
   <dependencies>
   
 	<!-- Stagemonitor -->
-	<dependency>
-		<groupId>org.stagemonitor</groupId>
-		<artifactId>stagemonitor-web-servlet</artifactId>
-		<version>${stagemonitor.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.stagemonitor</groupId>
-		<artifactId>stagemonitor-os</artifactId>
-		<version>${stagemonitor.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.stagemonitor</groupId>
-		<artifactId>stagemonitor-logging</artifactId>
-		<version>${stagemonitor.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.stagemonitor</groupId>
-		<artifactId>stagemonitor-alerting</artifactId>
-		<version>${stagemonitor.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.stagemonitor</groupId>
-		<artifactId>stagemonitor-tracing-elasticsearch</artifactId>
-		<version>${stagemonitor.version}</version>
-	</dependency>
+    <dependency>
+        <groupId>org.activiti.cloud</groupId>
+        <artifactId>activiti-cloud-services-stagemonitor</artifactId>
+        <version>${activiti-cloud-services-stagemonitor.version}</version>        
+    </dependency>
 	
 	<!-- Drools -->
 	<dependency>
@@ -89,12 +69,12 @@
 	
 	<!-- Activiti7 -->  
     <dependency>
-      <groupId>org.activiti.cloud</groupId>
+      <groupId>org.activiti.cloud.rb</groupId>
       <artifactId>activiti-cloud-starter-runtime-bundle</artifactId>
       <exclusions>
       	<!-- conflicts with stagemonitor -->
       	<exclusion>
-	      <groupId>org.activiti.cloud</groupId>
+	      <groupId>org.activiti.cloud.common</groupId>
 	      <artifactId>activiti-cloud-services-tracing</artifactId>
       	</exclusion>
       </exclusions>
@@ -109,18 +89,8 @@
       <artifactId>h2</artifactId>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
+      <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
