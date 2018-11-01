@@ -21,7 +21,7 @@
     <maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
     <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version> <!-- required for jx -->
 	<!-- Stagemonitor -->    
-  	<activiti-cloud-services-stagemonitor.version>7.0.0</activiti-cloud-services-stagemonitor.version>
+  	<activiti-cloud-services-stagemonitor.version>7.0.1</activiti-cloud-services-stagemonitor.version>
   	<!-- Drools -->
   	<drools.version>5.4.0.Final</drools.version>
   </properties>
@@ -40,7 +40,7 @@
   
 	<!-- Stagemonitor -->
     <dependency>
-        <groupId>org.activiti.cloud</groupId>
+        <groupId>org.activiti.cloud.common</groupId>
         <artifactId>activiti-cloud-services-stagemonitor</artifactId>
         <version>${activiti-cloud-services-stagemonitor.version}</version>        
     </dependency>
