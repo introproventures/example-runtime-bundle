@@ -1,7 +1,14 @@
 pipeline {
     agent {
-      label "jenkins-maven"
-    }
+        kubernetes {
+            // Change the name of jenkins-maven label to be able to use yaml configuration snippet
+            label "maven-gke-preemtible"
+            // Inherit from Jx Maven pod template
+            inheritFrom "maven"
+            // Add scheduling configuration to Jenkins builder pod template
+            yamlFile "gke-preemptible.yaml"
+        }
+    }   
     environment {
       ORG               = 'introproventures'
       APP_NAME          = 'example-runtime-bundle'
@@ -47,7 +54,7 @@ pipeline {
             // so we can retrieve the version in later steps
             sh "echo \$(jx-release-version) > VERSION"
             sh "mvn versions:set -DnewVersion=\$(cat VERSION)"
-            sh 'mvn clean install'
+            sh 'mvn clean install -DskipTests'
           }
           dir ('./charts/example-runtime-bundle') {
             container('maven') {
@@ -86,13 +93,5 @@ pipeline {
         always {
             cleanWs()
         }
-/*
-        failure {
-            input """Pipeline failed. 
-We will keep the build pod around to help you diagnose any failures. 
-
-Select Proceed or Abort to terminate the build pod"""
-        }
-*/
     }
   }
