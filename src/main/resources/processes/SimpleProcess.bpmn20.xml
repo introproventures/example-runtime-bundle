@@ -5,7 +5,7 @@
     <bpmn2:startEvent id="StartEvent_0mxj1bm">
       <bpmn2:outgoing>SequenceFlow_13oqu9i</bpmn2:outgoing>
     </bpmn2:startEvent>
-    <bpmn2:userTask id="UserTask_16x4h6t" name="Perform Action" activiti:priority="0">
+    <bpmn2:userTask id="UserTask_16x4h6t" name="Perform Action" activiti:priority="0" activiti:candidateGroups="hr">
       <bpmn2:incoming>SequenceFlow_13oqu9i</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_1pua6rk</bpmn2:outgoing>
     </bpmn2:userTask>
