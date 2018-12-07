@@ -1,57 +1,66 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0en" modeler:exportDateTime="20170630121556884" modeler:modelId="31032" modeler:modelVersion="1" modeler:modelLastUpdated="1498821282568">
-  <process id="SimpleProcess" name="SimpleProcess" isExecutable="true">
-    <startEvent id="startEvent1">
-      <extensionElements>
-        <modeler:editor-resource-id><![CDATA[startEvent1]]></modeler:editor-resource-id>
-      </extensionElements>
-    </startEvent>
-    <userTask id="sid-CDFE7219-4627-43E9-8CA8-866CC38EBA94" name="Perform action" activiti:candidateGroups="hr">
-      <extensionElements>
-        <modeler:allow-send-email><![CDATA[true]]></modeler:allow-send-email>
-        <modeler:initiator-can-complete><![CDATA[false]]></modeler:initiator-can-complete>
-        <modeler:editor-resource-id><![CDATA[sid-CDFE7219-4627-43E9-8CA8-866CC38EBA94]]></modeler:editor-resource-id>
-      </extensionElements>
-    </userTask>
-    <sequenceFlow id="sid-68945AF1-396F-4B8A-B836-FC318F62313F" sourceRef="startEvent1" targetRef="sid-CDFE7219-4627-43E9-8CA8-866CC38EBA94">
-      <extensionElements>
-        <modeler:editor-resource-id><![CDATA[sid-68945AF1-396F-4B8A-B836-FC318F62313F]]></modeler:editor-resource-id>
-      </extensionElements>
-    </sequenceFlow>
-    <endEvent id="sid-9F938772-895F-436D-A7D1-051B7A69D676">
-      <extensionElements>
-        <modeler:editor-resource-id><![CDATA[sid-9F938772-895F-436D-A7D1-051B7A69D676]]></modeler:editor-resource-id>
-      </extensionElements>
-    </endEvent>
-    <sequenceFlow id="sid-3C0516C4-1BF7-48F8-88CF-04C41810FE00" sourceRef="sid-CDFE7219-4627-43E9-8CA8-866CC38EBA94" targetRef="sid-9F938772-895F-436D-A7D1-051B7A69D676">
-      <extensionElements>
-        <modeler:editor-resource-id><![CDATA[sid-3C0516C4-1BF7-48F8-88CF-04C41810FE00]]></modeler:editor-resource-id>
-      </extensionElements>
-    </sequenceFlow>
-  </process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_SimpleProcess">
-    <bpmndi:BPMNPlane bpmnElement="SimpleProcess" id="BPMNPlane_SimpleProcess">
-      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
-        <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="163.0"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:activiti="http://activiti.org/bpmn" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:process id="SimpleProcess" name="Simple Process" isExecutable="true">
+    <bpmn2:documentation />
+    <bpmn2:startEvent id="StartEvent_0mxj1bm">
+      <bpmn2:outgoing>SequenceFlow_13oqu9i</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:userTask id="UserTask_16x4h6t" name="Perform Action" activiti:priority="high">
+      <bpmn2:incoming>SequenceFlow_13oqu9i</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_1pua6rk</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_13oqu9i" sourceRef="StartEvent_0mxj1bm" targetRef="UserTask_16x4h6t" />
+    <bpmn2:endEvent id="EndEvent_1v4twqh">
+      <bpmn2:incoming>SequenceFlow_1wbnl8g</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_1pua6rk" sourceRef="UserTask_16x4h6t" targetRef="ServiceTask_13cy0iq" />
+    <bpmn2:serviceTask id="ServiceTask_13cy0iq" name="Service Task" implementation="Example Connector">
+      <bpmn2:incoming>SequenceFlow_1pua6rk</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_1wbnl8g</bpmn2:outgoing>
+    </bpmn2:serviceTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_1wbnl8g" sourceRef="ServiceTask_13cy0iq" targetRef="EndEvent_1v4twqh" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="simpleproc-dc9fdd04-e80b-4837-9024-1faea15a3031">
+      <bpmndi:BPMNShape id="StartEvent_0mxj1bm_di" bpmnElement="StartEvent_0mxj1bm">
+        <dc:Bounds x="-57" y="86" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-84" y="126" width="90" height="12" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="sid-CDFE7219-4627-43E9-8CA8-866CC38EBA94" id="BPMNShape_sid-CDFE7219-4627-43E9-8CA8-866CC38EBA94">
-        <omgdc:Bounds height="80.0" width="100.0" x="195.0" y="135.0"/>
+      <bpmndi:BPMNShape id="UserTask_16x4h6t_di" bpmnElement="UserTask_16x4h6t">
+        <dc:Bounds x="61" y="64" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="sid-9F938772-895F-436D-A7D1-051B7A69D676" id="BPMNShape_sid-9F938772-895F-436D-A7D1-051B7A69D676">
-        <omgdc:Bounds height="28.0" width="28.0" x="360.0" y="164.0"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="sid-68945AF1-396F-4B8A-B836-FC318F62313F" id="BPMNEdge_sid-68945AF1-396F-4B8A-B836-FC318F62313F">
-        <omgdi:waypoint x="130.0" y="178.0"/>
-        <omgdi:waypoint x="162.5" y="178.0"/>
-        <omgdi:waypoint x="162.5" y="175.0"/>
-        <omgdi:waypoint x="195.0" y="175.0"/>
+      <bpmndi:BPMNEdge id="SequenceFlow_13oqu9i_di" bpmnElement="SequenceFlow_13oqu9i">
+        <di:waypoint x="-21" y="104" />
+        <di:waypoint x="111" y="104" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="0" y="83" width="90" height="12" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="sid-3C0516C4-1BF7-48F8-88CF-04C41810FE00" id="BPMNEdge_sid-3C0516C4-1BF7-48F8-88CF-04C41810FE00">
-        <omgdi:waypoint x="295.0" y="175.0"/>
-        <omgdi:waypoint x="327.5" y="175.0"/>
-        <omgdi:waypoint x="327.5" y="178.0"/>
-        <omgdi:waypoint x="360.0" y="178.0"/>
+      <bpmndi:BPMNShape id="EndEvent_1v4twqh_di" bpmnElement="EndEvent_1v4twqh">
+        <dc:Bounds x="409" y="86" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="427" y="126" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1pua6rk_di" bpmnElement="SequenceFlow_1pua6rk">
+        <di:waypoint x="161" y="104" />
+        <di:waypoint x="274" y="104" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="172.5" y="83" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_13cy0iq_di" bpmnElement="ServiceTask_13cy0iq">
+        <dc:Bounds x="224" y="64" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1wbnl8g_di" bpmnElement="SequenceFlow_1wbnl8g">
+        <di:waypoint x="324" y="104" />
+        <di:waypoint x="409" y="104" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="366.5" y="83" width="0" height="12" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
-</definitions>
+</bpmn2:definitions>
